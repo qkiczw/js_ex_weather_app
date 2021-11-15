@@ -2,9 +2,10 @@
   "name": "js_ex_weather_app",
   "version": "1.0.0",
   "description": "Weather app that shows weather from OpenWeatherMap API",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
