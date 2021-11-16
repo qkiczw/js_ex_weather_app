@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/qkiczw/js_ex_weather_app#readme",
   "devDependencies": {
+    "css-loader": "^6.5.1",
+    "style-loader": "^3.3.1",
     "webpack": "^5.64.0",
     "webpack-cli": "^4.9.1"
   }
