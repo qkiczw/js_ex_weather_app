@@ -9,6 +9,20 @@
   </head>
   <body>
     <h1>Weather App in VanillaJS</h1>
+    <div class="app__container">
+      <div class="search__container">
+        <form class="search-form" action="">
+          <label class="search-form__name" for="search-input"
+            >Nazwa miasta</label
+          >
+          <input id="search-input" class="search-form__input" />
+          <button class="search-form__btn__search">Szukaj</button>
+          <button class="search-form__btn__location">&#9967;</button>
+        </form>
+      </div>
+      <div class="current-weather__container"></div>
+      <div class="couple-days-weather__container"></div>
+    </div>
 
     <script src="bundle.js"></script>
   </body>
