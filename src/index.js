@@ -12,13 +12,29 @@ function setUserLocation(e) {
   e.preventDefault();
   navigator.geolocation.getCurrentPosition((succes) => {
     let { latitude, longitude } = succes.coords;
-    console.log(latitude, longitude);
+    console.log(succes);
 
     fetch(
       `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely&units=metric&lang=pl&appid=${API_KEY}`
     )
       .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        showWeaterData(data);
+      })
       .catch((error) => console.log("error", error));
   });
+}
+
+function showWeaterData(data) {
+  console.log(data);
+
+  let { temp } = data.current;
+  let { icon, description } = data.current.weather[0];
+  document.querySelector(".current-temp__temp").innerHTML = `${Math.ceil(
+    temp
+  )} &#8451;`;
+  document.querySelector(".current-temp__desc").innerHTML = description;
+  document.querySelector(
+    ".current-temp__icon"
+  ).src = `http://openweathermap.org/img/wn//${icon}@2x.png`;
 }

@@ -1,18 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300&display=swap");
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "Lato", sans-serif;
 }
 
 $bgColor: rgb(199, 199, 199);
 
 .app__container {
-  background-color: $bgColor;
   min-height: 500px;
 
   .search-form {
+    background-color: $bgColor;
+    padding: 1rem;
     &__input {
       padding: 0.5rem;
+    }
+    &__btn__search,
+    &__btn__location {
+      margin-left: 10px;
+      padding: 5px 7px;
+      font-size: 2rem;
+      border: none;
+      border-radius: 5px;
+    }
+  }
+
+  .current-weather__container {
+    margin-top: 20px;
+
+    .current-temp {
+      &__container {
+        background-color: rgb(87, 87, 87);
+        color: #fff;
+      }
+
+      &__temp {
+        font-size: 3rem;
+      }
     }
   }
 }
