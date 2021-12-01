@@ -41,3 +41,22 @@ function showWeaterData(data) {
   document.querySelector(".current-temp__humidity").innerHTML = humidity;
   document.querySelector(".current-temp__wind").innerHTML = wind_speed;
 }
+
+// chart.js config
+
+const config = {
+  type: "bar",
+  data: {
+    labels: ["jeden", "dwa", "trzy", "cztery", "pięć"],
+    datasets: [
+      {
+        label: "Temperatura godzinowa",
+        data: [1, 2, 3, 4, 5],
+        backgroundColor: "blue",
+      },
+    ],
+  },
+  options: {},
+};
+
+const myChart = new Chart(document.getElementById("hourlyTempChart"), config);
