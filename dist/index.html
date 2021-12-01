@@ -30,7 +30,8 @@
       <div class="results">
         <div class="current-weather__container">
           <div class="current-temp__container">
-            <h2 class="current-temp__title">Aktualna tempreatura:</h2>
+            <p class="current-temp__title">Aktualna tempreatura</p>
+            <p class="current-temp__time"></p>
             <div>
               <span class="current-temp__temp">0</span>
               <img
@@ -64,16 +65,19 @@
             </div>
           </div>
           <div class="hourly-temp__container">
-            <div>
-              <p>Wykres godzinowy</p>
-              <canvas id="hourlyTempChart"></canvas>
-            </div>
+            <canvas id="hourlyTempChart"></canvas>
           </div>
         </div>
         <div class="couple-days-weather__container"></div>
       </div>
     </div>
 
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+      integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="bundle.js"></script>
   </body>

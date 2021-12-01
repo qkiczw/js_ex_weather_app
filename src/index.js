@@ -28,8 +28,19 @@ function setUserLocation(e) {
 function showWeaterData(data) {
   console.log(data);
 
-  let { temp, pressure, humidity, wind_speed } = data.current;
+  let { temp, pressure, humidity, wind_speed, dt } = data.current;
   let { icon, description } = data.current.weather[0];
+  let chartHours = data.hourly.map((item) =>
+    moment(item.dt * 1000).format("HH:mm")
+  );
+
+  let chartValues = data.hourly.map((item) => item.temp);
+  let chartValuesFellsLike = data.hourly.map((item) => item.feels_like);
+
+  const defaultChartValues = [...new Array(48).fill(1)];
+
+  console.log(defaultChartValues);
+
   document.querySelector(".current-temp__temp").innerHTML = `${Math.ceil(
     temp
   )} &#8451;`;
@@ -40,23 +51,33 @@ function showWeaterData(data) {
   document.querySelector(".current-temp__pressure").innerHTML = pressure;
   document.querySelector(".current-temp__humidity").innerHTML = humidity;
   document.querySelector(".current-temp__wind").innerHTML = wind_speed;
+  document.querySelector(".current-temp__time").innerHTML = moment(
+    dt * 1000
+  ).format("HH:mm");
+
+  // chart.js config
+  const config = {
+    type: "bar",
+    data: {
+      labels: chartHours,
+      datasets: [
+        {
+          label: "Punkt środkowy",
+          data: chartValues,
+          backgroundColor: "blue",
+        },
+        {
+          label: "Odczuwalna",
+          data: chartValuesFellsLike,
+          backgroundColor: "green",
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+    },
+  };
+
+  const myChart = new Chart(document.getElementById("hourlyTempChart"), config);
 }
-
-// chart.js config
-
-const config = {
-  type: "bar",
-  data: {
-    labels: ["jeden", "dwa", "trzy", "cztery", "pięć"],
-    datasets: [
-      {
-        label: "Temperatura godzinowa",
-        data: [1, 2, 3, 4, 5],
-        backgroundColor: "blue",
-      },
-    ],
-  },
-  options: {},
-};
-
-const myChart = new Chart(document.getElementById("hourlyTempChart"), config);

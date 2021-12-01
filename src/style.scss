@@ -30,9 +30,11 @@ $bgColor: rgb(199, 199, 199);
   .current-weather__container {
     display: flex;
     margin-top: 20px;
+    max-height: 300px;
 
     .current-temp {
       &__container {
+        width: 20%;
         padding: 20px;
         background-color: rgb(87, 87, 87);
         color: #fff;
@@ -46,7 +48,9 @@ $bgColor: rgb(199, 199, 199);
       }
     }
     .hourly-temp__container {
-      background-color: lightgreen;
+      width: 80%;
+      background-color: lightgray;
+      max-height: 300px;
     }
   }
 }
