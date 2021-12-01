@@ -6,6 +6,13 @@
     <meta name="description" content="JavaScript" />
     <meta name="author" content="Imię Nazwisko" />
     <title>Weather App</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
     <h1>Weather App in VanillaJS</h1>
@@ -33,7 +40,28 @@
                 class="w-icon"
               />
             </div>
-            <p class="current-temp__desc">puste</p>
+            <p class="current-temp__desc"></p>
+            <div>
+              <span class="current-temp__icons"
+                ><i class="fas fa-tachometer-alt"></i>
+              </span>
+              <span>Ciśnienie: </span
+              ><span class="current-temp__pressure">puste</span>
+            </div>
+            <div>
+              <span class="current-temp__icons"
+                ><i class="fas fa-tint"></i>
+              </span>
+              <span>Wilgotność: </span
+              ><span class="current-temp__humidity">puste</span>
+            </div>
+            <div>
+              <span class="current-temp__icons"
+                ><i class="fas fa-wind"></i> </span
+              ><span>Wiatr: </span>
+              <span class="current-temp__wind">puste</span>
+              <span>km/h</span>
+            </div>
           </div>
         </div>
         <div class="couple-days-weather__container"></div>

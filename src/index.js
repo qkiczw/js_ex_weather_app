@@ -15,7 +15,7 @@ function setUserLocation(e) {
     console.log(succes);
 
     fetch(
-      `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely&units=metric&lang=pl&appid=${API_KEY}`
+      `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=minutely&units=metric&lang=pl&appid=${API_KEY}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -28,7 +28,7 @@ function setUserLocation(e) {
 function showWeaterData(data) {
   console.log(data);
 
-  let { temp } = data.current;
+  let { temp, pressure, humidity, wind_speed } = data.current;
   let { icon, description } = data.current.weather[0];
   document.querySelector(".current-temp__temp").innerHTML = `${Math.ceil(
     temp
@@ -37,4 +37,7 @@ function showWeaterData(data) {
   document.querySelector(
     ".current-temp__icon"
   ).src = `http://openweathermap.org/img/wn//${icon}@2x.png`;
+  document.querySelector(".current-temp__pressure").innerHTML = pressure;
+  document.querySelector(".current-temp__humidity").innerHTML = humidity;
+  document.querySelector(".current-temp__wind").innerHTML = wind_speed;
 }

@@ -33,8 +33,12 @@ $bgColor: rgb(199, 199, 199);
 
     .current-temp {
       &__container {
+        padding: 20px;
         background-color: rgb(87, 87, 87);
         color: #fff;
+      }
+      &__desc-icons {
+        width: 100px;
       }
 
       &__temp {
