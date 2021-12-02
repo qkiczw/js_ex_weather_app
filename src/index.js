@@ -6,6 +6,8 @@ const searchFieldValue = document.querySelector(".search-form__input");
 const searchBtn = document.querySelector(".search-form__btn__search");
 const locationBtn = document.querySelector(".search-form__btn__location");
 
+const weekWeatherContainer = document.querySelector(".week-weather__container");
+
 locationBtn.addEventListener("click", setUserLocation);
 
 function setUserLocation(e) {
@@ -30,16 +32,16 @@ function showWeaterData(data) {
 
   let { temp, pressure, humidity, wind_speed, dt } = data.current;
   let { icon, description } = data.current.weather[0];
+
   let chartHours = data.hourly.map((item) =>
     moment(item.dt * 1000).format("HH:mm")
   );
-
   let hourlyTempValues = data.hourly.map((item) => item.temp);
   let hourlyTempValuesFellsLike = data.hourly.map((item) => item.feels_like);
 
   const defaultChartValues = [...new Array(48).fill(1)];
 
-  document.querySelector(".current-temp__temp").innerHTML = `${Math.ceil(
+  document.querySelector(".current-temp__temp").innerHTML = `${Math.round(
     temp
   )} &#8451;`;
   document.querySelector(".current-temp__desc").innerHTML = description;
@@ -78,4 +80,26 @@ function showWeaterData(data) {
   };
 
   const myChart = new Chart(document.getElementById("hourlyTempChart"), config);
+
+  // let xxx = data.daily.map((day) => day.temp);
+  data.daily.forEach((day) => {
+    let { icon } = day.weather[0];
+    let singleDayItem = document.createElement(`div`);
+    singleDayItem.classList.add("week-weather__item");
+    singleDayItem.innerHTML = `
+    <div class="week-weather__item__day">${moment(day.dt * 1000).format(
+      "dddd"
+    )}</div>
+    <div class="week-weather__item__icon">
+      <img src="http://openweathermap.org/img/wn//${icon}@2x.png" />
+    </div>
+    <div class="week-weather__item__temp--day">Dzień: <span>${Math.round(
+      day.temp.day
+    )}</span> C</div>
+    <div class="week-weather__item__temp--night">Noc: <span>${Math.round(
+      day.temp.night
+    )}</span> C</div>
+    `;
+    weekWeatherContainer.appendChild(singleDayItem);
+  });
 }

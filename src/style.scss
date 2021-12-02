@@ -55,7 +55,7 @@ $bgColor: rgb(199, 199, 199);
       max-height: 300px;
     }
   }
-  .couple-days-weather {
+  .week-weather {
     &__container {
       display: flex;
       justify-content: flex-start;
@@ -71,6 +71,16 @@ $bgColor: rgb(199, 199, 199);
       border: 1px solid gray;
       border-radius: 5px;
       padding: 5px 5px;
+      margin: 0 5px;
+
+      &__day {
+        color: #fff;
+        background-color: darkslategrey;
+        border-radius: 5px;
+        padding: 5px;
+        width: 90%;
+        text-align: center;
+      }
     }
   }
 }
