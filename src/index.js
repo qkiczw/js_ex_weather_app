@@ -34,12 +34,10 @@ function showWeaterData(data) {
     moment(item.dt * 1000).format("HH:mm")
   );
 
-  let chartValues = data.hourly.map((item) => item.temp);
-  let chartValuesFellsLike = data.hourly.map((item) => item.feels_like);
+  let hourlyTempValues = data.hourly.map((item) => item.temp);
+  let hourlyTempValuesFellsLike = data.hourly.map((item) => item.feels_like);
 
   const defaultChartValues = [...new Array(48).fill(1)];
-
-  console.log(defaultChartValues);
 
   document.querySelector(".current-temp__temp").innerHTML = `${Math.ceil(
     temp
@@ -63,12 +61,12 @@ function showWeaterData(data) {
       datasets: [
         {
           label: "Punkt środkowy",
-          data: chartValues,
+          data: hourlyTempValues,
           backgroundColor: "blue",
         },
         {
           label: "Odczuwalna",
-          data: chartValuesFellsLike,
+          data: hourlyTempValuesFellsLike,
           backgroundColor: "green",
         },
       ],
