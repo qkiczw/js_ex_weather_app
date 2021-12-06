@@ -1,6 +1,9 @@
 import "./style.scss";
 
 let dayjs = require("dayjs");
+require("dayjs/locale/pl");
+
+console.log(dayjs(new Date()).locale("pl").format("dddd"));
 
 const API_KEY = "dd5bbad88362bfa4029566ec28d36062";
 const searchFieldValue = document.querySelector(".search-form__input");
@@ -35,7 +38,9 @@ function showWeaterData(data) {
   let { icon, description } = data.current.weather[0];
 
   let chartHours = data.hourly.map((item) =>
-    moment(item.dt * 1000).format("HH:mm")
+    dayjs(item.dt * 1000)
+      .locale("pl")
+      .format("HH:mm")
   );
   let hourlyTempValues = data.hourly.map((item) => item.temp);
   let hourlyTempValuesFellsLike = data.hourly.map((item) => item.feels_like);
@@ -52,9 +57,9 @@ function showWeaterData(data) {
   document.querySelector(".current-temp__pressure").innerHTML = pressure;
   document.querySelector(".current-temp__humidity").innerHTML = humidity;
   document.querySelector(".current-temp__wind").innerHTML = wind_speed;
-  document.querySelector(".current-temp__time").innerHTML = moment(
-    dt * 1000
-  ).format("HH:mm");
+  document.querySelector(".current-temp__time").innerHTML = dayjs(dt * 1000)
+    .locale("pl")
+    .format("HH");
 
   // chart.js config
   const config = {
@@ -88,9 +93,9 @@ function showWeaterData(data) {
     let singleDayItem = document.createElement(`div`);
     singleDayItem.classList.add("week-weather__item");
     singleDayItem.innerHTML = `
-    <div class="week-weather__item__day">${moment(day.dt * 1000).format(
-      "dddd"
-    )}</div>
+    <div class="week-weather__item__day">${dayjs(day.dt * 1000)
+      .locale("pl")
+      .format("dddd")}</div>
     <div class="week-weather__item__icon">
       <img src="http://openweathermap.org/img/wn//${icon}@2x.png" />
     </div>
