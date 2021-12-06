@@ -1,5 +1,6 @@
 import "./style.scss";
-console.log("hello world!");
+
+let dayjs = require("dayjs");
 
 const API_KEY = "dd5bbad88362bfa4029566ec28d36062";
 const searchFieldValue = document.querySelector(".search-form__input");
@@ -103,3 +104,7 @@ function showWeaterData(data) {
     weekWeatherContainer.appendChild(singleDayItem);
   });
 }
+
+// TODO use localstorage to save last picked latitude and longitude
+// TODO search by city name
+// TODO rwd
