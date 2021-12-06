@@ -12,6 +12,20 @@ const locationBtn = document.querySelector(".search-form__btn__location");
 
 const weekWeatherContainer = document.querySelector(".week-weather__container");
 
+searchBtn.addEventListener("click", setUserCoords);
+
+function setUserCoords(e) {
+  e.preventDefault();
+  fetch(
+    `https://api.openweathermap.org/data/2.5/weather?q=${searchFieldValue.value}&appid=${API_KEY}`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data.coord);
+    })
+    .catch((error) => console.log("error", error));
+}
+
 locationBtn.addEventListener("click", setUserLocation);
 
 function setUserLocation(e) {
