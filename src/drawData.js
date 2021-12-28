@@ -2,21 +2,21 @@ let dayjs = require("dayjs");
 require("dayjs/locale/pl");
 
 export function drawForecastDataInHtml(data) {
-  console.log(data);
-
   const weekWeatherContainer = document.querySelector(
     ".week-weather__container"
   );
-  let { temp, pressure, humidity, wind_speed, dt } = data.current;
-  let { icon, description } = data.current.weather[0];
+  let { temp, pressure, humidity, wind_speed, dt } = data.forecast.current;
+  let { icon, description } = data.forecast.current.weather[0];
 
-  let chartHours = data.hourly.map((item) =>
+  let chartHours = data.forecast.hourly.map((item) =>
     dayjs(item.dt * 1000)
       .locale("pl")
       .format("HH:mm")
   );
-  let hourlyTempValues = data.hourly.map((item) => item.temp);
-  let hourlyTempValuesFellsLike = data.hourly.map((item) => item.feels_like);
+  let hourlyTempValues = data.forecast.hourly.map((item) => item.temp);
+  let hourlyTempValuesFellsLike = data.forecast.hourly.map(
+    (item) => item.feels_like
+  );
 
   const defaultChartValues = [...new Array(48).fill(1)];
 
@@ -30,9 +30,10 @@ export function drawForecastDataInHtml(data) {
   document.querySelector(".current-temp__pressure").innerHTML = pressure;
   document.querySelector(".current-temp__humidity").innerHTML = humidity;
   document.querySelector(".current-temp__wind").innerHTML = wind_speed;
+  document.querySelector(".current-temp__city-name").innerHTML = data.name;
   document.querySelector(".current-temp__time").innerHTML = dayjs(dt * 1000)
     .locale("pl")
-    .format("HH");
+    .format("HH:mm");
 
   // chart.js config
   const config = {
@@ -60,7 +61,7 @@ export function drawForecastDataInHtml(data) {
 
   const myChart = new Chart(document.getElementById("hourlyTempChart"), config);
 
-  data.daily.forEach((day) => {
+  data.forecast.daily.forEach((day) => {
     let { icon } = day.weather[0];
     let singleDayItem = document.createElement(`div`);
     singleDayItem.classList.add("week-weather__item");
