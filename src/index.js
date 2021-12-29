@@ -1,7 +1,7 @@
 import "./style.scss";
 
 import { drawForecastDataInHtml } from "./drawData";
-import { getForecastByCityName } from "./apiCalls";
+import { getForecastByCityName, getForecastByGeolocation } from "./apiCalls";
 
 let dayjs = require("dayjs");
 require("dayjs/locale/pl");
@@ -24,20 +24,22 @@ locationBtn.addEventListener("click", showForecatsByCoords);
 function showForecatsByCoords(e) {
   e.preventDefault();
 
-  navigator.geolocation.getCurrentPosition((succes) => {
-    let { latitude, longitude } = succes.coords;
-    console.log("Coords success: ", succes);
+  getForecastByGeolocation(API_KEY);
 
-    fetch(
-      `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=minutely&units=metric&lang=pl&appid=${API_KEY}`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        drawForecastDataInHtml(data);
-        console.log("navData", data);
-      })
-      .catch((error) => console.log("error", error));
-  });
+  // navigator.geolocation.getCurrentPosition((succes) => {
+  //   let { latitude, longitude } = succes.coords;
+  //   console.log("Coords success: ", succes);
+
+  //   fetch(
+  //     `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=minutely&units=metric&lang=pl&appid=${API_KEY}`
+  //   )
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       drawForecastDataInHtml(data);
+  //       console.log("navData", data);
+  //     })
+  //     .catch((error) => console.log("error", error));
+  // });
 }
 
 // TODO use localstorage to save last picked latitude and longitude
