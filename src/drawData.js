@@ -1,6 +1,9 @@
 let dayjs = require("dayjs");
 require("dayjs/locale/pl");
 
+// Default variable for destroying and rendering charts
+let myChart;
+
 export function drawForecastDataInHtml(data) {
   const weekWeatherContainer = document.querySelector(
     ".week-weather__container"
@@ -35,7 +38,29 @@ export function drawForecastDataInHtml(data) {
     .locale("pl")
     .format("HH:mm");
 
-  // chart.js config
+  weekWeatherContainer.innerHTML = "";
+  data.forecast.daily.forEach((day) => {
+    let { icon } = day.weather[0];
+    let singleDayItem = document.createElement(`div`);
+    singleDayItem.classList.add("week-weather__item");
+    singleDayItem.innerHTML = `
+      <div class="week-weather__item__day">${dayjs(day.dt * 1000)
+        .locale("pl")
+        .format("dddd")}</div>
+      <div class="week-weather__item__icon">
+        <img src="http://openweathermap.org/img/wn//${icon}@2x.png" />
+      </div>
+      <div class="week-weather__item__temp--day">Dzień: <span>${Math.round(
+        day.temp.day
+      )}</span> C</div>
+      <div class="week-weather__item__temp--night">Noc: <span>${Math.round(
+        day.temp.night
+      )}</span> C</div>
+      `;
+    weekWeatherContainer.appendChild(singleDayItem);
+  });
+
+  // chart.js - myChart config
   const config = {
     type: "bar",
     data: {
@@ -59,26 +84,12 @@ export function drawForecastDataInHtml(data) {
     },
   };
 
-  const myChart = new Chart(document.getElementById("hourlyTempChart"), config);
-
-  data.forecast.daily.forEach((day) => {
-    let { icon } = day.weather[0];
-    let singleDayItem = document.createElement(`div`);
-    singleDayItem.classList.add("week-weather__item");
-    singleDayItem.innerHTML = `
-      <div class="week-weather__item__day">${dayjs(day.dt * 1000)
-        .locale("pl")
-        .format("dddd")}</div>
-      <div class="week-weather__item__icon">
-        <img src="http://openweathermap.org/img/wn//${icon}@2x.png" />
-      </div>
-      <div class="week-weather__item__temp--day">Dzień: <span>${Math.round(
-        day.temp.day
-      )}</span> C</div>
-      <div class="week-weather__item__temp--night">Noc: <span>${Math.round(
-        day.temp.night
-      )}</span> C</div>
-      `;
-    weekWeatherContainer.appendChild(singleDayItem);
-  });
+  // Opisz zmiany i wyślij na githuba:
+  // zmien może cahrt style na liniowy
+  if (myChart === undefined) {
+    myChart = new Chart(document.getElementById("hourlyTempChart"), config);
+  } else {
+    myChart.destroy();
+    myChart = new Chart(document.getElementById("hourlyTempChart"), config);
+  }
 }
