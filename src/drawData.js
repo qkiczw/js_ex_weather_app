@@ -84,8 +84,6 @@ export function drawForecastDataInHtml(data) {
     },
   };
 
-  // Opisz zmiany i wyślij na githuba:
-  // zmien może cahrt style na liniowy
   if (myChart === undefined) {
     myChart = new Chart(document.getElementById("hourlyTempChart"), config);
   } else {
