@@ -33,6 +33,5 @@ function showForecatsByCoords(e) {
   getForecastByGeolocation();
 }
 
-// TODO use localstorage to save last picked latitude and longitude or city name
 // TODO rwd
 // TODO Chart reset function to draw updated data

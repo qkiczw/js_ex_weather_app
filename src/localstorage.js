@@ -4,7 +4,7 @@ export function sendDataToLocalStorage(data) {
   localStorage.setItem("forecast", JSON.stringify(data));
 }
 
-export function getDataFromLocalStorage() {
+function getDataFromLocalStorage() {
   if (JSON.parse(localStorage.getItem("forecast")) === null) {
     dataFromLocalStorage = {
       name: "warszawa",
