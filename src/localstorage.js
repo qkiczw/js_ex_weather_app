@@ -1,10 +1,25 @@
+export let dataFromLocalStorage = {};
+
 export function sendDataToLocalStorage(data) {
-  console.log("Im sending!!!");
-  console.log(data);
   localStorage.setItem("forecast", JSON.stringify(data));
 }
 
 export function getDataFromLocalStorage() {
-  console.log("Im reading data from localStorage");
-  console.log(JSON.parse(localStorage.getItem("forecast")));
+  if (JSON.parse(localStorage.getItem("forecast")) === null) {
+    dataFromLocalStorage = {
+      name: "warszawa",
+      lat: "52.23117286550588",
+      lon: "21.011062983790552",
+    };
+  } else {
+    let data = JSON.parse(localStorage.getItem("forecast"));
+
+    dataFromLocalStorage = {
+      name: data.name,
+      lat: data.lat,
+      lon: data.lon,
+    };
+  }
 }
+
+getDataFromLocalStorage();

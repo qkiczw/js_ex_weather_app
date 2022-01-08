@@ -1,7 +1,7 @@
 import "./style.scss";
 
-import { drawForecastDataInHtml } from "./drawData";
 import { getForecastByCityName, getForecastByGeolocation } from "./apiCalls";
+import { dataFromLocalStorage } from "./localstorage";
 
 let dayjs = require("dayjs");
 require("dayjs/locale/pl");
@@ -9,6 +9,13 @@ require("dayjs/locale/pl");
 const searchFieldValue = document.querySelector(".search-form__input");
 const searchBtn = document.querySelector(".search-form__btn__search");
 const locationBtn = document.querySelector(".search-form__btn__location");
+
+// Getting data from LocalStorage - start
+function showDataFromLocalStorage() {
+  getForecastByCityName(dataFromLocalStorage.name);
+}
+showDataFromLocalStorage();
+// Getting data from LocalStorage - end
 
 searchBtn.addEventListener("click", showForecastByCityName);
 
