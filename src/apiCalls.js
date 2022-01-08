@@ -1,4 +1,5 @@
 import { drawForecastDataInHtml } from "./drawData";
+import { sendDataToLocalStorage } from "./localstorage";
 
 const API_KEYS = {
   openweather: "dd5bbad88362bfa4029566ec28d36062",
@@ -33,6 +34,7 @@ export async function getForecastByCityName(searchFieldVal) {
     .catch((error) => console.log("error", error));
 
   drawForecastDataInHtml(forecastData);
+  sendDataToLocalStorage(forecastData);
 }
 
 export function getForecastByGeolocation() {
