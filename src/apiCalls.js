@@ -1,16 +1,18 @@
+import { name } from "dayjs/locale/pl";
 import { drawForecastDataInHtml } from "./drawData";
-import { sendDataToLocalStorage } from "./localstorage";
+import {
+  sendDataToLocalStorage,
+  getDataFromLocalStorage,
+} from "./localstorage";
 
 const API_KEYS = {
   openweather: "dd5bbad88362bfa4029566ec28d36062",
   geoapify: "adedf4d6425641f5a8e1fbff8da47505",
 };
 
-let forecastData = {
-  name: "",
-  lat: "",
-  lon: "",
-};
+let forecastData = {};
+
+getDataFromLocalStorage();
 
 export async function getForecastByCityName(searchFieldVal) {
   await fetch(
@@ -34,6 +36,7 @@ export async function getForecastByCityName(searchFieldVal) {
     .catch((error) => console.log("error", error));
 
   drawForecastDataInHtml(forecastData);
+  console.log("forecastData:", forecastData);
   sendDataToLocalStorage(forecastData);
 }
 
