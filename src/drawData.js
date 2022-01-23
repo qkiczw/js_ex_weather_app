@@ -5,9 +5,7 @@ require("dayjs/locale/pl");
 let myChart;
 
 export function drawForecastDataInHtml(data) {
-  const weekWeatherContainer = document.querySelector(
-    ".week-weather__container"
-  );
+  const weekWeatherContainer = document.querySelector(".week-weather__days");
   let { temp, pressure, humidity, wind_speed, dt } = data.forecast.current;
   let { icon, description } = data.forecast.current.weather[0];
 

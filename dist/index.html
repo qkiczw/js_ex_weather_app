@@ -69,11 +69,17 @@
               <span>km/h</span>
             </div>
           </div>
-          <div class="hourly-temp__container">
-            <canvas id="hourlyTempChart"></canvas>
+          <div class="hourly-temp">
+            <h2 class="hourly-temp__title">Pogoda godzinowa</h2>
+            <div class="hourly-temp__container">
+              <canvas id="hourlyTempChart"></canvas>
+            </div>
           </div>
         </div>
-        <div class="week-weather__container"></div>
+        <div class="week-weather__container">
+          <h2 class="week-weather__title">Pogoda długoterminowa</h2>
+          <div class="week-weather__days"></div>
+        </div>
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
