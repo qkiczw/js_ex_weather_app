@@ -7,26 +7,73 @@
   font-family: "Lato", sans-serif;
 }
 
-$bgColor: rgb(199, 199, 199);
+$bgColorPrimary: #0d47a1;
+$bgColorSecondary: #5472d3;
+$fontColorPrimary: #616161;
+$borderRadius: 5px;
 
 .app__container {
   min-height: 500px;
   padding: 25px 10px;
 
-  .search-form {
-    background-color: $bgColor;
+  .search__container {
+    background-color: $bgColorPrimary;
     padding: 1rem;
-    &__input {
-      padding: 0.5rem;
+    border-radius: $borderRadius;
+  }
+  .search-form {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    max-width: 100%;
+    background-color: white;
+    padding: 10px 15px;
+    border-radius: $borderRadius;
+
+    &__name {
+      position: absolute;
+      z-index: 2;
+      left: 40px;
+      color: $fontColorPrimary;
     }
-    &__btn__search,
+    &__name::before {
+      position: relative;
+      left: -5px;
+      border-left: 1px solid $fontColorPrimary;
+      content: "";
+    }
+    &__input {
+      position: relative;
+      left: 30px;
+      width: 80%;
+      z-index: 1;
+      border-radius: 10px;
+      border: none;
+      font-size: 1rem;
+    }
+    &__btn__search {
+      position: absolute;
+      right: 10px;
+      font-size: 1.5rem;
+      color: $fontColorPrimary;
+      z-index: 2;
+      border: none;
+      background: none;
+    }
     &__btn__location {
-      margin-left: 10px;
+      position: absolute;
+      z-index: 2;
+      left: 5px;
       padding: 5px 7px;
-      font-size: 2rem;
+      font-size: 1.5rem;
+      color: $fontColorPrimary;
+      background: none;
       border: none;
       border-radius: 5px;
     }
+  }
+  .search-form__input:focus {
   }
 
   .current-weather__container {
@@ -57,9 +104,11 @@ $bgColor: rgb(199, 199, 199);
   }
   .week-weather {
     &__container {
+      position: relative;
       width: 100%;
       display: flex;
-      justify-content: space-around;
+      justify-content: start;
+      overflow-y: scroll;
       align-items: center;
       padding: 1rem 0;
     }
