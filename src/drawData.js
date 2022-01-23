@@ -32,9 +32,11 @@ export function drawForecastDataInHtml(data) {
   document.querySelector(".current-temp__humidity").innerHTML = humidity;
   document.querySelector(".current-temp__wind").innerHTML = wind_speed;
   document.querySelector(".current-temp__city-name").innerHTML = data.name;
-  document.querySelector(".current-temp__time").innerHTML = dayjs(dt * 1000)
+  document.querySelector(".current-temp__time").innerHTML = `Godzina: ${dayjs(
+    dt * 1000
+  )
     .locale("pl")
-    .format("HH:mm");
+    .format("HH:mm")}`;
 
   weekWeatherContainer.innerHTML = "";
   data.forecast.daily.forEach((day) => {
@@ -72,7 +74,7 @@ export function drawForecastDataInHtml(data) {
         {
           label: "Odczuwalna",
           data: hourlyTempValuesFellsLike,
-          backgroundColor: "green",
+          backgroundColor: "#d32f2f",
         },
       ],
     },

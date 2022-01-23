@@ -37,7 +37,7 @@
             <p class="current-temp__title">Aktualna tempreatura dla</p>
             <p class="current-temp__city-name"></p>
             <p class="current-temp__time"></p>
-            <div>
+            <div class="current-temp__base-info">
               <span class="current-temp__temp">0</span>
               <img
                 class="current-temp__icon"
@@ -46,29 +46,37 @@
                 class="w-icon"
               />
             </div>
-            <p class="current-temp__desc"></p>
-            <div>
-              <span class="current-temp__icons"
-                ><i class="fas fa-tachometer-alt"></i>
-              </span>
-              <span>Ciśnienie: </span
-              ><span class="current-temp__pressure">puste</span>
-            </div>
-            <div>
-              <span class="current-temp__icons"
-                ><i class="fas fa-tint"></i>
-              </span>
-              <span>Wilgotność: </span
-              ><span class="current-temp__humidity">puste</span>
-            </div>
-            <div>
-              <span class="current-temp__icons"
-                ><i class="fas fa-wind"></i> </span
-              ><span>Wiatr: </span>
-              <span class="current-temp__wind">puste</span>
-              <span>km/h</span>
+            <div class="current-temp__detailed-info">
+              <div class="current-temp__items">
+                <span class="current-temp__icons"
+                  ><i class="fas fa-cloud"></i>
+                </span>
+                <span class="current-temp__desc"></span>
+              </div>
+              <div class="current-temp__items">
+                <span class="current-temp__icons"
+                  ><i class="fas fa-tachometer-alt"></i>
+                </span>
+                <span>Ciśnienie: </span
+                ><span class="current-temp__pressure">puste</span>
+              </div>
+              <div class="current-temp__items">
+                <span class="current-temp__icons"
+                  ><i class="fas fa-tint"></i>
+                </span>
+                <span>Wilgotność: </span
+                ><span class="current-temp__humidity">puste</span>
+              </div>
+              <div class="current-temp__items">
+                <span class="current-temp__icons"
+                  ><i class="fas fa-wind"></i> </span
+                ><span>Wiatr: </span>
+                <span class="current-temp__wind">puste</span>
+                <span>km/h</span>
+              </div>
             </div>
           </div>
+
           <div class="hourly-temp">
             <h2 class="hourly-temp__title">Pogoda godzinowa</h2>
             <div class="hourly-temp__container">
