@@ -20,7 +20,18 @@ $borderRadius: 5px;
     background-color: $bgColorPrimary;
     padding: 1rem;
     border-radius: $borderRadius;
+    font-size: 1.2rem;
   }
+
+  .search__item {
+    background-color: red;
+  }
+  .search__item__input:focus
+    + .search__item__label
+    > .search__item__placeholder {
+    opacity: 0;
+  }
+
   .search-form {
     position: relative;
     display: flex;
@@ -72,8 +83,6 @@ $borderRadius: 5px;
       border: none;
       border-radius: 5px;
     }
-  }
-  .search-form__input:focus {
   }
 
   .current-weather__container {

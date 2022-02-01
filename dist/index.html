@@ -18,7 +18,25 @@
     <h1>Weather App in VanillaJS</h1>
     <div class="app__container">
       <div class="search__container">
-        <form class="search-form" action="">
+        <form>
+          <div class="search__item">
+            <input
+              class="search__item__input"
+              id="search__item"
+              type="search"
+            />
+            <label for="search__item" class="search__item__label">
+              <span class="search__item__placeholder">Nazwa miasta</span>
+            </label>
+            <button class="search__item__btn search__item__btn--city-name">
+              <i class="fas fa-map-marker-alt"></i>
+            </button>
+            <button class="search__item__btn search__item__btn--location">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        </form>
+        <!-- <form class="search-form" action="">
           <label class="search-form__name" for="search-input"
             >Nazwa miasta</label
           >
@@ -29,7 +47,7 @@
           <button class="search-form__btn__location">
             <i class="fas fa-map-marker-alt"></i>
           </button>
-        </form>
+        </form> -->
       </div>
       <div class="results">
         <div class="current-weather__container">
