@@ -38,10 +38,27 @@ $borderRadius: 5px;
     &__btn {
       position: absolute;
       font-size: 1.2rem;
+      color: $fontColorPrimary;
     }
 
     &__input {
       width: 100%;
+      border-radius: $borderRadius;
+      border: none;
+      padding-left: 25px;
+    }
+    &__label {
+      left: 25px;
+    }
+    &__btn--city-name {
+      right: 10px;
+      border: none;
+      background: none;
+    }
+    &__btn--location {
+      left: 5px;
+      border: none;
+      background: none;
     }
   }
   .search__item__input:focus
