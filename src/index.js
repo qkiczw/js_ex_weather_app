@@ -7,6 +7,7 @@ let dayjs = require("dayjs");
 require("dayjs/locale/pl");
 
 const searchFieldValue = document.querySelector(".search__item__input");
+const searchLabel = document.querySelector(".search__item__label");
 const searchBtn = document.querySelector(".search__item__btn--city-name");
 const locationBtn = document.querySelector(".search__item__btn--location");
 
@@ -33,5 +34,20 @@ function showForecatsByCoords(e) {
   getForecastByGeolocation();
 }
 
+searchFieldValue.addEventListener("keyup", function (e) {
+  if (e.which == 13 || e.keyCode == 13) {
+    getForecastByCityName(searchFieldValue.value);
+  }
+});
+
+searchFieldValue.addEventListener("ontouchend", searchLabelHandler);
+searchFieldValue.addEventListener("keyup", searchLabelHandler);
+searchFieldValue.addEventListener("focus", searchLabelHandler);
+
+function searchLabelHandler() {
+  searchFieldValue.value.length !== 0
+    ? searchLabel.classList.add("label-hidden")
+    : searchLabel.classList.remove("label-hidden");
+}
+
 // TODO rwd
-// TODO Chart reset function to draw updated data
