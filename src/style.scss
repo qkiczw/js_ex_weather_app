@@ -18,7 +18,7 @@ $borderRadius: 5px;
 
   .search__container {
     background-color: $bgColorPrimary;
-    height: 50px;
+    height: 4.5rem;
     border-radius: $borderRadius;
     font-size: 1.2rem;
     display: flex;
@@ -45,7 +45,7 @@ $borderRadius: 5px;
       width: 100%;
       border-radius: $borderRadius;
       border: none;
-      padding-left: 25px;
+      padding: 8px 35px 8px 25px;
     }
     &__label {
       left: 25px;

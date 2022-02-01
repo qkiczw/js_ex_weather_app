@@ -6,9 +6,9 @@ import { dataFromLocalStorage } from "./localstorage";
 let dayjs = require("dayjs");
 require("dayjs/locale/pl");
 
-const searchFieldValue = document.querySelector(".search-form__input");
-const searchBtn = document.querySelector(".search-form__btn__search");
-const locationBtn = document.querySelector(".search-form__btn__location");
+const searchFieldValue = document.querySelector(".search__item__input");
+const searchBtn = document.querySelector(".search__item__btn--city-name");
+const locationBtn = document.querySelector(".search__item__btn--location");
 
 // Getting data from LocalStorage - start
 function showDataFromLocalStorage() {
